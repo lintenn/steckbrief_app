@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:steckbrief_app/screens/daten_screen.dart';
 import 'package:steckbrief_app/screens/second_screen.dart';
 import 'package:steckbrief_app/screens/stack_screen.dart';
+import 'package:steckbrief_app/screens/urlaub_screen.dart';
 
 class StartScreen extends StatelessWidget {
   const StartScreen({Key? key}) : super(key: key);
@@ -27,10 +30,18 @@ class StartScreen extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
+                    context,
+                    PageTransition(
+                        type: PageTransitionType.fade,
+                      duration: Duration(milliseconds: 3000),
+                      child: SecondScreen())
+                  );
+                  /*
+                  Navigator.push(
                       context, 
                       MaterialPageRoute(builder: (context) => SecondScreen())
                   );
-
+                  */
                 },
                 child: Text("Grüss Dich!"),
               ),
@@ -54,6 +65,16 @@ class StartScreen extends StatelessWidget {
                 },
                 child: Text("Datenschutzeinstellungen"),
               ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => UrlaubScreen())
+                  );
+
+                },
+                child: Text("Urlaub"),
+              ),
               macheZeile(
                 text: "Alter: 57"
               ),
@@ -75,12 +96,11 @@ class StartScreen extends StatelessWidget {
               color: Colors.black12,
               child: Text(
                 text,
-                style: TextStyle(
+                style: GoogleFonts.anekBangla(
+                  fontSize: 32,
                   fontWeight: FontWeight.bold,
-                  fontStyle: FontStyle.italic,
-                  color: Colors.amberAccent,
-                  fontSize: 48.0,
-                ),
+                )
+
               ),
             ),
           );
